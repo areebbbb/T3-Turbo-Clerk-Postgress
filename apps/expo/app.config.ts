@@ -1,5 +1,8 @@
 import type { ConfigContext, ExpoConfig } from "expo/config";
 
+const CLERK_PUBLISHABLE_KEY =
+  "pk_test_a25vd2luZy1qYXliaXJkLTQyLmNsZXJrLmFjY291bnRzLmRldiQ";
+
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: "expo",
@@ -29,11 +32,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: "#1F104A",
     },
   },
-  // extra: {
-  //   eas: {
-  //     projectId: "your-eas-project-id",
-  //   },
-  // },
+  extra: {
+    eas: {
+      projectId: "0b4a71ce-f662-473c-82f0-036f1978f54a",
+    },
+    CLERK_PUBLISHABLE_KEY,
+  },
   experiments: {
     tsconfigPaths: true,
     typedRoutes: true,

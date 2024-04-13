@@ -160,7 +160,7 @@ export function PostCardSkeleton(props: { pulse?: boolean }) {
             pulse && "animate-pulse",
           )}
         >
-          &nbsp;
+          {" "}
         </h2>
         <p
           className={cn(
@@ -168,7 +168,7 @@ export function PostCardSkeleton(props: { pulse?: boolean }) {
             pulse && "animate-pulse",
           )}
         >
-          &nbsp;
+          {" "}
         </p>
       </div>
     </div>
