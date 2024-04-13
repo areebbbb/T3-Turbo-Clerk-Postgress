@@ -1,11 +1,18 @@
-export { auth as middleware } from "@acme/auth";
+import { authMiddleware } from "@clerk/nextjs";
 
-// Or like this if you need to do something here.
-// export default auth((req) => {
-//   console.log(req.auth) //  { session: { user: { ... } } }
-// })
+// See https://clerk.com/docs/references/nextjs/auth-middleware
+// for more information about configuring your Middleware
+export default authMiddleware({
+  // Allow signed out users to access the specified routes:
+  // publicRoutes: ['/anyone-can-visit-this-route'],
+});
 
-// Read more: https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: [
+    // Exclude files with a "." followed by an extension, which are typically static files.
+    // Exclude files in the _next directory, which are Next.js internals.
+    "/((?!.+\\.[\\w]+$|_next).*)",
+    // Re-include any files in the api or trpc folders that might have an extension
+    "/(api|trpc)(.*)",
+  ],
 };
