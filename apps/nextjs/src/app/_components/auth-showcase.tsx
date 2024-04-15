@@ -3,8 +3,8 @@ import { auth, currentUser, SignIn, SignOutButton } from "@clerk/nextjs";
 export async function AuthShowcase() {
   const session = auth();
   const user = await currentUser();
-  console.log("session", session?.userId);
-  if (!session) {
+  console.log("session", session.userId);
+  if (!session.userId) {
     return (
       <form>
         <SignIn />

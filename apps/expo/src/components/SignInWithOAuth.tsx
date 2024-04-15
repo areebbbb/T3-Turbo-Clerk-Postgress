@@ -13,7 +13,7 @@ const SignInWithOAuth = () => {
     try {
       const { createdSessionId, setActive } = await startOAuthFlow();
       if (createdSessionId && setActive) {
-        setActive({ session: createdSessionId });
+        void setActive({ session: createdSessionId });
       } else {
         // Modify this code to use signIn or signUp to set this missing requirements you set in your dashboard.
         throw new Error(
