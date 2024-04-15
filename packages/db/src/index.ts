@@ -1,5 +1,5 @@
-import { drizzle } from "drizzle-orm/mysql2";
-import { createConnection } from "mysql2/promise";
+import { drizzle } from "drizzle-orm/postgres-js";
+import postgres from "postgres";
 
 import { env } from "./config";
 import * as auth from "./schema/auth";
@@ -11,11 +11,11 @@ export { mySqlTable as tableCreator } from "./schema/_table";
 
 export * from "drizzle-orm";
 
-const mySql = await createConnection({
-  host: env.DB_HOST!,
-  user: env.DB_USERNAME!,
-  password: env.DB_PASSWORD!,
-  database: env.DB_NAME!,
+const mySql = postgres({
+  host: env.DB_HOST,
+  database: env.DB_NAME,
+  username: env.DB_USERNAME,
+  password: env.DB_PASSWORD,
 });
 
-export const db = drizzle(mySql, { schema, mode: "default" });
+export const db = drizzle(mySql, { schema });

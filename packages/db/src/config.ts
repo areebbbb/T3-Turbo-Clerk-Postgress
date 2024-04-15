@@ -15,7 +15,7 @@ export const env = createEnv({
 
 export default {
   schema: "./src/schema",
-  driver: "mysql2",
+  driver: "pg",
   dbCredentials: {
     database: env.DB_NAME,
     user: env.DB_USERNAME,
